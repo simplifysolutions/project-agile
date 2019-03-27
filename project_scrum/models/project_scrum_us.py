@@ -8,7 +8,7 @@ class ProjectScrumUs(models.Model):
     _name = 'project.scrum.us'
     _description = 'Project Scrum Use Stories'
     _order = 'reference'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     @api.model
     def create(self, vals):

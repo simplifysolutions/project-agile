@@ -23,10 +23,12 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <field name="use_tasks" position="before">
-                <field name="use_scrum" class="oe_inline" />
-                <label for="use_scrum" string="Use Scrum" />
-            </field>
+            <xpath expr="//div[@name='options_active']" position="inside">
+                <div>
+                    <field name="use_scrum" class="oe_inline" string="Allow Scrum"/>
+                    <label for="use_scrum"/>
+                </div>
+            </xpath>
         </field>
     </record>
  
@@ -58,10 +60,14 @@
                     <field name="meeting_count" widget="statinfo" />
                 </button>
             </button>
-            <field name="use_tasks" position="before">
-                <field name="use_scrum" class="oe_inline" />
-                <label for="use_scrum" string="Use Scrum" />
-            </field>
+            <!--
+            <xpath expr="//div[@name='options_active']" position="inside">
+                <div>
+                    <field name="use_scrum" class="oe_inline" string="Allow Scrum"/>
+                    <label for="use_scrum"/>
+                </div>
+            </xpath>
+            -->
             <field name="partner_id" position="after">
                 <group>
                     <label for="manhours" string="Expected Hours" />
@@ -101,6 +107,7 @@
             </xpath>
             <a name="%(project.act_project_project_2_project_task_all)d"
                 position="replace">
+                <!--
                 <a t-if="record.use_tasks.raw_value"
                     name="%(project.act_project_project_2_project_task_all)d"
                     type="action" style="margin-right: 10px">
@@ -114,6 +121,7 @@
                         <t t-if="! record.use_scrum.raw_value">Tasks</t>
                     </span>
                 </a>
+                -->
                 <a t-if="record.sprint_count.raw_value" name="%(action_ps_sprint_current)d"
                     type="action" style="margin-right: 10px">
                     <span class="o_value">
